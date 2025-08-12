@@ -1,5 +1,13 @@
 # Skeleton-based Action Recognition (Linear)
 
+In the linear protocol, the backbone network is first pre-trained to learn high-quality skeleton-based motion representations. During evaluation, the backbone parameters are frozen, and only a linear classifier is trained. This setup isolates the representation quality from downstream optimization, providing a fair assessment of the learned features.
+
+In addition, we provide settings for:
+
+- Early Action Recognition – The model is evaluated when only a partial observation of the action sequence is available, reflecting its ability to anticipate actions from incomplete information.
+
+- Semi-Supervised Action Recognition – Only a subset of the training data is used for fine-tuning, testing the model’s generalization capability under limited supervision.
+
 ## Scripts
 
 ```bash
