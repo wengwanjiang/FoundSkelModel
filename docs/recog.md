@@ -4,6 +4,8 @@ In the linear protocol, the backbone network is first pre-trained to learn high-
 
 In addition, we provide settings for:
 
+- Action Retrieval – Skeleton-based representations are extracted from the pre-trained backbone and compared using a k-nearest neighbors (kNN) search. Retrieval accuracy reflects the semantic consistency and discriminability of the learned feature space.
+
 - Early Action Recognition – The model is evaluated when only a partial observation of the action sequence is available, reflecting its ability to anticipate actions from incomplete information.
 
 - Semi-Supervised Action Recognition – Only a subset of the training data is used for fine-tuning, testing the model’s generalization capability under limited supervision.
