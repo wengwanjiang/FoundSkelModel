@@ -20,7 +20,7 @@ Human action understanding serves as a foundational pillar in the field of intel
 ## Planned Release
 
 The following components will be progressively released to facilitate reproduction and further research:
-- [x] Release pretrained model weights.
+- [ ] Release pretrained model weights.
 - [ ] Release finetuned model weights tailored for specific downstream tasks.
 - [ ] Release process scripts for PKU-MMD, NTU2D, and UAV datasets.
 - [ ] Release source code for skeleton-based action segmentation.
@@ -43,9 +43,9 @@ torch==1.8.0+cu118
 | Task                               | Document                             |
 | ---------------------------------- | ------------------------------------ |
 | Pretrain                   | [docs/pretrain.md](docs/pretrain.md) |
-| Skeleton-based action recognition  | [docs/recog.md](docs/pose3d.md)     |
-| Skeleton-based action detection    | [docs/detect.md](docs/action.md)     |
-| Skeleton-based action segmentation | [docs/segment.md](docs/mesh.md)         |
+| Skeleton-based action recognition  | [docs/recog.md](docs/recog.md)     |
+| Skeleton-based action detection    | [docs/detect.md](docs/detect.md)     |
+| Skeleton-based action segmentation | [docs/segment.md](docs/segment.md)         |
 
 
 
@@ -53,9 +53,9 @@ torch==1.8.0+cu118
 
 | Model                                          | Download Link                                                | Performance                  |
 | :--------------------------------------------- | ------------------------------------------------------------ | ---------------------------- |
-| Pretrained Models (NTU3D, NTU2D, UAV, PKU-MMD) | [OneDrive](https://1drv.ms/f/s!AvAdh0LSjEOlgS425shtVi9e5reN?e=6UeBa2), [BaiduDisk (passwd: xxxx)](https://1drv.ms/f/s!AvAdh0LSjEOlgS425shtVi9e5reN?e=6UeBa2) | -                            |
-| Skeleton-based Action Segmentation (PKU-MMD )  | [OneDrive](https://1drv.ms/f/s!AvAdh0LSjEOlgS425shtVi9e5reN?e=6UeBa2), [BaiduDisk (passwd: xxxx)](https://1drv.ms/f/s!AvAdh0LSjEOlgS425shtVi9e5reN?e=6UeBa2) | 68.7% (Acc), 67.5% (Edit)    |
-| Skeleton-based Action Detection (PKU-MMD)      | [OneDrive](https://1drv.ms/f/s!AvAdh0LSjEOlgS425shtVi9e5reN?e=6UeBa2), [BaiduDisk (passwd: xxxx)](https://1drv.ms/f/s!AvAdh0LSjEOlgS425shtVi9e5reN?e=6UeBa2) | 75.7% (mAP_a), 74.9% (mAP_v) |
+| Pretrained Models (NTU3D, NTU2D, UAV, PKU-MMD) | [OneDrive](https://1drv.ms/), [BaiduDisk (passwd: xxxx)](https://1drv.ms/) | -                            |
+| Skeleton-based Action Segmentation (PKU-MMD )  | [OneDrive](https://1drv.ms/), [BaiduDisk (passwd: xxxx)](https://1drv.ms/) | 68.7% (Acc), 67.5% (Edit)    |
+| Skeleton-based Action Detection (PKU-MMD)      | [OneDrive](https://1drv.ms/), [BaiduDisk (passwd: xxxx)](https://1drv.ms/) | 75.7% (mAP_a), 74.9% (mAP_v) |
 
 
 ## Main Results
@@ -98,4 +98,5 @@ that our code is based on:
 This code is distributed under an [MIT LICENSE](LICENSE).
 
 Note that our code depends on other libraries and uses datasets that each have their own respective licenses that must also be followed.
+
 
