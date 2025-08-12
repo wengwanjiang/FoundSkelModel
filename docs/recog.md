@@ -6,7 +6,7 @@ In addition, we provide settings for:
 
 - Action Retrieval – Skeleton-based representations are extracted from the pre-trained backbone and compared using a k-nearest neighbors (kNN) search. Retrieval accuracy reflects the semantic consistency and discriminability of the learned feature space.
 
-- Early Action Recognition – The model is evaluated when only a partial observation of the action sequence is available, reflecting its ability to anticipate actions from incomplete information.
+- Early Action Recognition – This task, also referred to as action prediction, aims to recognize an action as early as possible given only a partially observed sequence. To capture the temporal causality required for this setting, the temporal stream in the transformer employs causal attention operations, ensuring that predictions at any time step are based solely on past observations.
 
 - Semi-Supervised Action Recognition – Only a subset of the training data is used for fine-tuning, testing the model’s generalization capability under limited supervision.
 
