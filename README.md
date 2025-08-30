@@ -22,7 +22,7 @@ Human action understanding serves as a foundational pillar in the field of intel
 The following components will be progressively released to facilitate reproduction and further research:
 - [ ] Release pretrained model weights.
 - [ ] Release finetuned model weights tailored for specific downstream tasks.
-- [ ] Release process scripts for PKU-MMD, NTU2D, and UAV datasets.
+- [X] Release process scripts for PKU-MMD, NTU2D, and UAV datasets.
 - [ ] Release implementation for skeleton-based action segmentation.
 - [ ] Release implementation for skeleton-based action detection.
 - [ ] Release complete training and testing scripts. 
@@ -98,6 +98,7 @@ that our code is based on:
 This code is distributed under an [MIT LICENSE](LICENSE).
 
 Note that our code depends on other libraries and uses datasets that each have their own respective licenses that must also be followed.
+
 
 
 
