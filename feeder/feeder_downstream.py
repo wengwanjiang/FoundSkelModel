@@ -26,7 +26,7 @@ class Feeder(torch.utils.data.Dataset):
                  num_frame_path,
                  l_ratio,
                  input_size,
-                 mmap=True):#, use_txt=False):
+                 mmap=True,observe_ratio=1):
 
         self.data_path = data_path
         self.label_path = label_path
@@ -48,9 +48,9 @@ class Feeder(torch.utils.data.Dataset):
         else:
             self.semi = 1
         N = self.N
-        print('ori',self.data.shape,len(self.number_of_frames),len(self.label), self.semi)
-        print("l_ratio",self.l_ratio)
-        #self.use_txt = use_txt
+        print('origin ',self.data.shape,len(self.number_of_frames),len(self.label), self.semi)
+        print(f"Observe Ratio = {self.observe_ratio} , l_ratio = {self.l_ratio}")
+
         idx = np.arange(N)
         np.random.shuffle(idx)
         #np.random.shuffle(idx)
@@ -59,7 +59,8 @@ class Feeder(torch.utils.data.Dataset):
         self.data = self.data[idx_used]
         self.label = np.array(self.label)[idx_used]
         self.number_of_frames = self.number_of_frames[idx_used]
-        print('used', self.data.shape,len(self.number_of_frames),len(self.label))
+        print('used ', self.data.shape,len(self.number_of_frames),len(self.label))
+        self.observe_ratio = observe_ratio
     def load_data(self, mmap):
         # data: N C V T M
 
@@ -92,7 +93,8 @@ class Feeder(torch.utils.data.Dataset):
 
         # input: C, T, V, M
         data_numpy = np.array(self.data[index])
-        number_of_frames = self.number_of_frames[index]
+        # number_of_frames = self.number_of_frames[index]
+        number_of_frames = max(3,(self.number_of_frames[index] * self.observe_ratio) // 1)
         label = self.label[index]
 
         # crop a sub-sequnce 

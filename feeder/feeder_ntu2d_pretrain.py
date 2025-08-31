@@ -20,7 +20,7 @@ class Feeder(torch.utils.data.Dataset):
                  split, protocol, padding,
                  pkl_path,
                  l_ratio,
-                 input_size,):
+                 input_size):
         assert split in ['train', 'val']
         assert padding in ['confidence', 'zero']
         assert protocol in ['xsub', 'xview', 'xset']
@@ -38,10 +38,13 @@ class Feeder(torch.utils.data.Dataset):
         self.S = self.V
         self.B = self.V
         self.Bone = [(1, 2), (2, 4), (3,5), (4,6), (5,7), (7,9), (8,10), (9, 11), (10, 8), (11, 9), (12, 14), (13,15), (14, 16), (15, 17), (16,14), (17,15)]
+
         
         
         print(len(self.data),len(self.number_of_frames))
-        print("l_ratio",self.l_ratio)
+
+        
+
     def load_pkl(self, pkl_path, padding, protocol, split):
         
         with open(pkl_path, 'rb') as f:
@@ -88,7 +91,7 @@ class Feeder(torch.utils.data.Dataset):
         # input: C, T, V, M
         data_numpy = np.array(self.data[index])
         
-        number_of_frames = self.number_of_frames[index]
+        number_of_frames =  self.number_of_frames[index]
      
         # apply spatio-temporal augmentations to generate  view 1 
         # temporal crop-resize

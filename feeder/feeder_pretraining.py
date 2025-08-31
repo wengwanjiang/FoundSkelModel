@@ -21,7 +21,7 @@ class Feeder(torch.utils.data.Dataset):
                  num_frame_path,
                  l_ratio,
                  input_size,
-                 mmap=True):
+                 mmap=True, observe_ratio=1):
 
         self.data_path = data_path
         self.num_frame_path= num_frame_path
@@ -40,8 +40,10 @@ class Feeder(torch.utils.data.Dataset):
         
 
         print(self.data.shape,len(self.number_of_frames))
-        print("l_ratio",self.l_ratio)
-
+        self.observe_ratio = observe_ratio
+        print(f"Observe Ratio = {self.observe_ratio} , l_ratio = {self.l_ratio}")
+        
+        # number_of_frames = max(3,(self.number_of_frames[index] * self.observe_ratio) // 1)
     def load_data(self, mmap):
         # data: N C T V M
 
@@ -67,8 +69,8 @@ class Feeder(torch.utils.data.Dataset):
         # input: C, T, V, M
         data_numpy = np.array(self.data[index])
         
-        number_of_frames = self.number_of_frames[index]
-     
+        # number_of_frames = self.number_of_frames[index]
+        number_of_frames = max(3,(self.number_of_frames[index] * self.observe_ratio) // 1)
         # apply spatio-temporal augmentations to generate  view 1 
         # temporal crop-resize
 
