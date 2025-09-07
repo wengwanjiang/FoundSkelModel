@@ -5,9 +5,6 @@
 This is the official PyTorch implementation of the paper "[Foundation Model for Skeleton-Based Human Action Understanding](https://arxiv.org/abs/2508.12586)".
 
 
-## Contact
-
-If you notice any issues, missing details, or potential bugs, please feel free to reach out or open an issue. Feedback and contributions are very welcome!
 
 ## Framework
 ![](./images/pipeline.jpg)
@@ -64,6 +61,9 @@ torch==1.8.0+cu118
 ![](./images/linear.jpg)
 
 
+## Contact
+
+If you notice any issues, missing details, or potential bugs, please feel free to reach out or open an issue. Feedback and contributions are very welcome!
 
 ## Citation
 
@@ -100,6 +100,7 @@ that our code is based on:
 This code is distributed under an [MIT LICENSE](LICENSE).
 
 Note that our code depends on other libraries and uses datasets that each have their own respective licenses that must also be followed.
+
 
 
 
