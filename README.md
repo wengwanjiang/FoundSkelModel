@@ -54,7 +54,7 @@ torch==1.8.0+cu118
 | :--------------------------------------------- | ------------------------------------------------------------ | ---------------------------- |
 | Pretrained Models (NTU3D, NTU2D, UAV, PKU-MMD) | [OneDrive](https://1drv.ms/), [BaiduDisk (passwd: 1234)](https://pan.baidu.com/s/1MIHkMrc4_uZRAxMkX0oc8Q) | -                            |
 | Skeleton-based Action Segmentation (PKU-MMD )  | [OneDrive](https://1drv.ms/), [BaiduDisk (passwd: xxxx)](https://1drv.ms/) | 68.7% (Acc), 67.5% (Edit)    |
-| Skeleton-based Action Detection (PKU-MMD)      | [OneDrive](https://1drv.ms/), [BaiduDisk (passwd: xxxx)](https://1drv.ms/) | 75.7% (mAP_a), 74.9% (mAP_v) |
+| Skeleton-based Action Detection (PKU-MMD)      | [OneDrive](https://1drv.ms/), [BaiduDisk (passwd: 1234)](https://pan.baidu.com/s/1MIHkMrc4_uZRAxMkX0oc8Q) | 75.7% (mAP_a), 74.9% (mAP_v) |
 
 
 ## Main Results
@@ -100,6 +100,7 @@ that our code is based on:
 This code is distributed under an [MIT LICENSE](LICENSE).
 
 Note that our code depends on other libraries and uses datasets that each have their own respective licenses that must also be followed.
+
 
 
 
