@@ -45,17 +45,19 @@ parser.add_argument('--pretrained', default='', type=str,
                     help='path to moco pretrained checkpoint')
 
 parser.add_argument('--evaluate', default='false', type=str,
-                    help='path to detection checkpoint, just file name is ok')
+                    help='path to detection checkpoint')
 
 parser.add_argument('--finetune-dataset', default='ntu60', type=str,
                     help='which dataset to use for finetuning')
 
 parser.add_argument('--protocol', default='cross_view', type=str,
-                    help='traiining protocol of ntu')
+                    help='training protocol of ntu')
 parser.add_argument('--moda', default='joint', type=str,
                     help='joint, motion , bone')
+
 parser.add_argument('--backbone', default='DSTE', type=str,
                     help='DSTE or STTR')
+
 args = parser.parse_args()
 best_acc1 = 0
 
@@ -88,9 +90,10 @@ def main():
     
     if 'pth' not in args.evaluate and not os.path.exists(args.pretrained):
         print(args.pretrained, ' not found!')
-        #exit(0)
+        
     print(type(args.evaluate),args.evaluate)
-    # Simply call main_worker function
+    if args.evaluate is not None:
+        generate_bbox()
     main_worker(args)
 
 
@@ -103,14 +106,7 @@ def main_worker(args):
         opts = options.opts_pku_v1_xsub()
     elif args.finetune_dataset == 'pku_v2' and args.protocol == 'cross_subject':
         opts = options.opts_pku_v2_xsub()
-    elif args.finetune_dataset== 'ntu60' and args.protocol == 'cross_view':
-        opts = options.opts_ntu_60_cross_view()
-    elif args.finetune_dataset== 'ntu60' and args.protocol == 'cross_subject':
-        opts = options.opts_ntu_60_cross_subject()
-    elif args.finetune_dataset== 'ntu120' and args.protocol == 'cross_setup':
-        opts = options.opts_ntu_120_cross_setup()
-    elif args.finetune_dataset== 'ntu120' and args.protocol == 'cross_subject':
-        opts = options.opts_ntu_120_cross_subject()
+    
 
     if args.backbone == 'DSTE':
         from model.DSTE import Downstream
@@ -118,6 +114,7 @@ def main_worker(args):
     elif args.backbone == 'STTR':
         from model.STTR import Downstream
         model = Downstream(**opts.encoder_args)
+
     print(sum_para_cnt(model)/1e6)
     print("options",opts.encoder_args,opts.train_feeder_args,opts.test_feeder_args)
     print('\n', args)
@@ -181,17 +178,16 @@ def main_worker(args):
     }
     train_loader = torch.utils.data.DataLoader(train_dataset,  **trainloader_params)
     val_loader = torch.utils.data.DataLoader(val_dataset,  **valloader_params)
-    print(args.evaluate)
-    for epoch in range(0, 10 + args.epochs):
-        #adjust_learning_rate(optimizer, epoch, args)
+    
+    for epoch in range(0, args.epochs):
         # train for one epoch
         
-        if 'pth' in args.evaluate:
+        if args.evaluate is not None:
             detector_path = './checkpoint/ntu60_xs_j_a5b5_sttr/' + args.evaluate
             load_detector(detector_path, model)
             with torch.no_grad():
                 generate_bbox(val_loader, model, args)
-            exit(0)
+            break
         train(train_loader, model, criterion, optimizer, epoch, args)
         
         # evaluate on validation set
@@ -204,12 +200,12 @@ def main_worker(args):
             acc1 = 0
         
         # remember best acc@1 and save checkpoint
-        is_best = acc1 > best_acc1
-        if is_best and False:
-            print("found new best accuracy:= ",acc1)
-            best_acc1 = max(acc1, best_acc1)
-            best_state = {'state_dict': model.state_dict()}
-            torch.save(best_state, './checkpoint/ntu60_xs_j_a5b5_sttr/best_detection.pth.tar')
+        # is_best = acc1 > best_acc1
+        # if is_best and False:
+        #     print("found new best accuracy:= ",acc1)
+        #     best_acc1 = max(acc1, best_acc1)
+        #     best_state = {'state_dict': model.state_dict()}
+        #     torch.save(best_state, './checkpoint/ntu60_xs_j_a5b5_sttr/best_detection.pth.tar')
     print("class head Final best accuracy",best_acc1)
 
 
@@ -306,8 +302,7 @@ def validate(val_loader, model, criterion, args):
             output = output.reshape(-1, 52)
             target = target.reshape(-1)
             loss = criterion(output, target)
-            #torch.nn.Softmax
-            #F.softmax()
+            
             # measure accuracy and record loss
             acc1, acc5 = accuracy(output, target, topk=(1, 5), ignore=-1)
             bgacc1, _ = accuracy(output, target, topk=(1, 5), ignore=1) 
@@ -371,13 +366,13 @@ def generate_bbox(val_loader, model, args, thereshold=0.02):
         for i in range(1, mask_matrix.shape[0]): # exclude bg (0)
             pro_ = get_proposal(mask_matrix[i])
             proposal[file] += [[i, u, v, np.mean(pb_matrix[i][u:v])] for u, v in pro_]      
-    temporal_thd = 0.1
-    #print('========== tmeporal NMS thereshold =', temporal_thd)
+    # temporal_thd = 0.1
+    # print('========== tmeporal NMS thereshold =', temporal_thd)
     os.mkdir('./checkpoint/ntu60_xs_j_a5b5_sttr/detect_result')
     for k, v in proposal.items():
         with open('./checkpoint/ntu60_xs_j_a5b5_sttr/detect_result/' + k, 'a') as ff:
             s = '' 
-            #for lb, st, ed, score in temporal_nms(v, temporal_thd):
+            # for lb, st, ed, score in temporal_nms(v, temporal_thd):
             for lb, st, ed, score in v:
                 s += str(int(lb)) + ',' + str(int(st)) + ',' + str(int(ed)) + ',' + str(score) + '\n'
             ff.write(s)
@@ -405,8 +400,7 @@ def adjust_learning_rate(optimizer, epoch, args):
     lr = args.lr
     for milestone in args.schedule:
         lr *= 0.1 if epoch >= milestone else 1.
-    #for param_group in optimizer.param_groups:
-    #    param_group['lr'] = lr
+
     print(optimizer.param_groups)
     for param_group in optimizer.param_groups:
         print(type(param_group),  param_group['lr'])
@@ -447,6 +441,7 @@ def get_proposal(brr): # return [L, R]
             proposal.append([start, i])
             start = None
     return proposal
+
 def temporal_nms(actions, iou_threshold):
     """
     Implementation of Temporal Non-Maximum Suppression (NMS) for action detection in videos.
@@ -494,7 +489,8 @@ def temporal_nms(actions, iou_threshold):
         remaining = np.where(iou <= iou_threshold)[0]
         indices = indices[remaining + 1]
     return actions[keep].tolist()
-    #return keep
+
+
 if __name__ == '__main__':
     seed = 0
     random.seed(seed)         # Python随机库的种子
