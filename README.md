@@ -24,7 +24,7 @@ The following components will be progressively released to facilitate reproducti
 - [X] Release process scripts for PKU-MMD, NTU2D, and UAV datasets.
 - [ ] Release implementation for skeleton-based action segmentation.
 - [X] Release implementation for skeleton-based early-action prediction.
-- [ ] Release implementation for skeleton-based action detection.
+- [X] Release implementation for skeleton-based action detection.
 - [ ] Release complete training and testing scripts. 
 
 
@@ -97,6 +97,7 @@ that our code is based on:
 This code is distributed under an [MIT LICENSE](LICENSE).
 
 Note that our code depends on other libraries and uses datasets that each have their own respective licenses that must also be followed.
+
 
 
 
