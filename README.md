@@ -4,11 +4,11 @@
 
 This is the official PyTorch implementation of the paper "[Foundation Model for Skeleton-Based Human Action Understanding](https://arxiv.org/abs/2508.12586)".
 
-
+## 📰 News
+- 🚨 **Paper Portal for Top Conferences in the Field of Artificial intelligence: [CV_Paper_Portal](https://hongsong-wang.github.io/CV_Paper_Portal/)**
 
 ## Framework
 ![](./images/pipeline.jpg)
-
 
 
 ## Abstract
@@ -100,6 +100,7 @@ that our code is based on:
 This code is distributed under an [MIT LICENSE](LICENSE).
 
 Note that our code depends on other libraries and uses datasets that each have their own respective licenses that must also be followed.
+
 
 
 
