@@ -2,9 +2,12 @@
 
 <a href="https://pytorch.org/get-started/locally/"><img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&logoColor=white"></a> [![arXiv](https://img.shields.io/badge/arXiv-2508.12586-b31b1b.svg)](https://arxiv.org/abs/2508.12586) [![Hugging Face Models](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-ffab41)](https://huggingface.co/wengwanjiang/FoundSkelModel)
 
+[**IEEE TPAMI | 骨架动作理解大一统：东南大学等提出USDRL，一个面向密集表征学习的基础模型**](https://zhuanlan.zhihu.com/p/1941100981736694650) (PS: 本报道由“我爱计算机视觉”编辑撰写，我们虽未向任何自媒体平台投稿，但欢迎翻译和宣传该工作，注明出处即可，谢谢)
+
 This is the official PyTorch implementation of the paper "[Foundation Model for Skeleton-Based Human Action Understanding](https://arxiv.org/abs/2508.12586)".
 
 ## 📰 News
+- 🚨 **The whole ICCV 2025 papers with Codes are summarized on [ICCV2025_ABSTRACT/](https://hongsong-wang.github.io/ICCV2025_ABSTRACT/)**
 - 🚨 **Paper Portal for Top Conferences in the Field of Artificial intelligence: [CV_Paper_Portal](https://hongsong-wang.github.io/CV_Paper_Portal/)**
 
 ## Framework
@@ -100,6 +103,7 @@ that our code is based on:
 This code is distributed under an [MIT LICENSE](LICENSE).
 
 Note that our code depends on other libraries and uses datasets that each have their own respective licenses that must also be followed.
+
 
 
 
