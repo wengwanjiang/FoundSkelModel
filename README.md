@@ -10,7 +10,6 @@
 
 [**TPAMI 2025 | 骨架动作理解大一统：东南大学等提出USDRL，一个面向密集表征学习的基础模型**](https://mp.weixin.qq.com/s/WihM8EZXeOQeDv_dA2Tl6g)
 
-
 (PS: 以上报道为自媒体编辑撰写，我们虽未向任何平台投稿，但欢迎翻译/宣传/讨论该工作，注明出处即可，谢谢)
 
 This is the official PyTorch implementation of the paper "[Foundation Model for Skeleton-Based Human Action Understanding](https://arxiv.org/abs/2508.12586)".
@@ -112,6 +111,7 @@ that our code is based on:
 This code is distributed under an [MIT LICENSE](LICENSE).
 
 Note that our code depends on other libraries and uses datasets that each have their own respective licenses that must also be followed.
+
 
 
 
