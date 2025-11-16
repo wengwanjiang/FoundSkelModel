@@ -88,11 +88,12 @@ If you find our work useful for your project, please consider citing the paper:
   year={2025}
 }
 
-@article{wengUSDRL25plus,
-  title={Foundation Model for Skeleton-Based Human Action Understanding},
-  author={Hongsong Wang and Wanjiang Weng and Junbo Wang and Fang Zhao and Guo-sen Xie and Xin Geng and  Liang Wang},
-  journal={Transactions on Pattern Analysis and Machine Intelligence},
-  year={2025}
+@article{wang2025foundation,
+  title={Foundation model for skeleton-based human action understanding},
+  author={Wang, Hongsong and Weng, Wanjiang and Wang, Junbo and Zhao, Fang and Xie, Guo-Sen and Geng, Xin and Wang, Liang},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  year={2025},
+  publisher={IEEE}
 }
 ```
 
@@ -111,6 +112,7 @@ that our code is based on:
 This code is distributed under an [MIT LICENSE](LICENSE).
 
 Note that our code depends on other libraries and uses datasets that each have their own respective licenses that must also be followed.
+
 
 
 
