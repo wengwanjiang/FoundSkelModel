@@ -15,8 +15,7 @@
 This is the official PyTorch implementation of the paper "[Foundation Model for Skeleton-Based Human Action Understanding](https://arxiv.org/abs/2508.12586)".
 
 ## 📰 News
-- 🚨 **The whole ICCV 2025 papers with Codes are summarized on [ICCV2025_ABSTRACT/](https://hongsong-wang.github.io/ICCV2025_ABSTRACT/)**
-- 🚨 **Paper Portal for Top Conferences in the Field of Artificial intelligence: [CV_Paper_Portal](https://hongsong-wang.github.io/CV_Paper_Portal/)**
+- **Paper Portal for Top Conferences in the Field of Artificial intelligence: [CV_Paper_Portal](https://hongsong-wang.github.io/CV_Paper_Portal/)**
 
 ## Framework
 ![](./images/pipeline.jpg)
